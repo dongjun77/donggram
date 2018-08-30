@@ -3,34 +3,32 @@ from rest_framework.response import Response
 from . import models, serializers
 # Create your views here.
 
-class ListAllImages(APIView):
+class Feed(APIView):
 
     def get(self, request, format=None):
+        
+        user = request.user
+        
+        following_users = user.following.all()
 
-        all_images = models.Image.objects.all() # 파이썬 모델
+        image_list = []
 
-        serializer = serializers.ImageSerializer(all_images, many=True) # 가지고온 파이썬 이미지 모델들을 json 모델로 변경해준다
+        for following_user in following_users:
 
-        return Response(data=serializer.data)
+            user_images = following_user.images.all()[:2]
 
-class ListAllComments(APIView):
+            for image in user_images:
 
-    def get(self, request, format=None):
+                image_list.append(image)
 
-        user_id = request.user.id
+        # sorted_list = sorted(image_list, key=get_key, reverse=True)
+        sorted_list = sorted(image_list, key=lambda image: image.created_at, reverse=True)
 
-        all_comments = models.Comment.objects.filter(creator=user_id)
+        print(sorted_list)
 
-        serializer = serializers.CommentSerializer(all_comments, many=True)
+        serializer = serializers.ImageSerializer(sorted_list,many=True)
 
-        return Response(data=serializer.data)
+        return Response(serializer.data)
 
-class ListAllLikes(APIView):
-
-    def get(self, request, format=None):
-
-        all_likes = models.Like.objects.all()
-
-        serializer = serializers.LikeSerializer(all_likes, many=True)
-
-        return Response(data=serializer.data)
+# def get_key(image):
+#     return image.created_at
