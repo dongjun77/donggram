@@ -33,7 +33,20 @@ class Feed(APIView):
 class LikeImage(APIView):
     
     def get(self, request, image_id, format=None):
+
+        user = request.user
         
-        print(image_id)
+        try:
+            found_image = models.Image.objects.get(id=image_id)
+        except models.Image.DoesNotExist:
+            return Response(status=404)
+
+        print(found_image)
+        new_like = models.Like.objects.create(
+            creator=user,
+            image=found_image
+        )
+
+        new_like.save()
 
         return Response(status=200)
