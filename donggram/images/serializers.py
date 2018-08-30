@@ -1,16 +1,7 @@
 from rest_framework import serializers
 from . import models
 
-
-class ImageSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = models.Image
-        fields = '__all__'
-
 class CommentSerializer(serializers.ModelSerializer):
-
-    image = ImageSerializer()
 
     class Meta:
         model = models.Comment
@@ -18,9 +9,21 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class LikeSerializer(serializers.ModelSerializer):
 
-    image = ImageSerializer()
-
     class Meta:
         model = models.Like
         fields = '__all__' # like의 필드는 creator와 image가 있다.
-    
+class ImageSerializer(serializers.ModelSerializer):
+
+    comments = CommentSerializer(many=True)
+    likes = LikeSerializer(many=True)
+
+    class Meta:
+        model = models.Image
+        fields = ( # 구체적으로 원하는 필드만 가져온다
+            'id',
+            'file',
+            'location',
+            'caption',
+            'comments',
+            'likes',
+        )
