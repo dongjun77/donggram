@@ -10,12 +10,17 @@ class ImageSerializer(serializers.ModelSerializer):
 
 class CommentSerializer(serializers.ModelSerializer):
 
+    image = ImageSerializer()
+
     class Meta:
         model = models.Comment
         fields = '__all__'
 
 class LikeSerializer(serializers.ModelSerializer):
 
+    image = ImageSerializer()
+
     class Meta:
         model = models.Like
         fields = '__all__' # like의 필드는 creator와 image가 있다.
+    
