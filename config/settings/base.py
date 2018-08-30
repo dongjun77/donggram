@@ -61,21 +61,21 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
     # 'django.contrib.humanize', # Handy template tags
     'django.contrib.admin',
-]
+] # 장고의 기본적인 앱들 일단 필요한것들..
 THIRD_PARTY_APPS = [
-    'crispy_forms',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework',
-]
+] # 별도로 설치돈 것들
 LOCAL_APPS = [
     'donggram.users.apps.UsersAppConfig',
     # Your stuff: custom apps go here
+    'donggram.images.apps.ImagesConfig',
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
-
+# 장고가 가장 처음 실행하는 파일
 # MIGRATIONS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
