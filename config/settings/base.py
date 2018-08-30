@@ -66,7 +66,7 @@ THIRD_PARTY_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'rest_framework',
+    'rest_framework',# REST framwork
 ] # 별도로 설치돈 것들
 LOCAL_APPS = [
     'donggram.users.apps.UsersAppConfig',
