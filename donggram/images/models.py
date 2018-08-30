@@ -21,6 +21,10 @@ class Image(TimeStampedModel):
     caption = models.TextField()
     creator = models.ForeignKey(user_models.User, null=True, on_delete=models.CASCADE, related_name='images')
 
+    @property
+    def like_count(self):
+        return self.likes.all().count()
+
     def __str__(self): # 어드민 화면에서 해당 제목이 어떻게 보이는지 형태를 정의한다
         return '{} - {}'.format(self.location, self.caption)
 
