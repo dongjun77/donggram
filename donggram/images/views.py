@@ -9,6 +9,6 @@ class ListAllImages(APIView):
 
         all_images = models.Image.objects.all() # 파이썬 모델
 
-        serializer = serializers.ImageSerializer(all_images, many=True) # 가지고온 파이썬 모델을 json 모델로 변경해준다
+        serializer = serializers.ImageSerializer(all_images, many=True) # 가지고온 파이썬 이미지 모델들을 json 모델로 변경해준다
 
         return Response(data=serializer.data)
