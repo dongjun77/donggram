@@ -12,3 +12,23 @@ class ListAllImages(APIView):
         serializer = serializers.ImageSerializer(all_images, many=True) # 가지고온 파이썬 이미지 모델들을 json 모델로 변경해준다
 
         return Response(data=serializer.data)
+
+class ListAllComments(APIView):
+
+    def get(self, request, format=None):
+
+        all_comments = models.Comment.objects.all()
+
+        serializer = serializers.CommentSerializer(all_comments, many=True)
+
+        return Response(data=serializer.data)
+
+class ListAllLikes(APIView):
+
+    def get(self, request, format=None):
+
+        all_likes = models.Like.objects.all()
+
+        serializer = serializers.LikeSerializer(all_likes, many=True)
+
+        return Response(data=serializer.data)
