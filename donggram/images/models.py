@@ -22,6 +22,9 @@ class Image(TimeStampedModel):
     caption = models.TextField()
     creator = models.ForeignKey(user_models.User, null=True, on_delete=models.CASCADE)
 
+    def __str__(self): # 어드민 화면에서 해당 제목이 어떻게 보이는지 형태를 정의한다
+        return '{} - {}'.format(self.location, self.caption)
+
 @python_2_unicode_compatible
 class Comment(TimeStampedModel):
 
@@ -30,8 +33,14 @@ class Comment(TimeStampedModel):
     creator = models.ForeignKey(user_models.User, null=True, on_delete=models.CASCADE)
     image = models.ForeignKey(Image, null=True, on_delete=models.CASCADE)
 
+    def __str__(self): # 어드민 화면에서 해당 제목이 어떻게 보이는지 형태를 정의한다
+        return self.message
+
 @python_2_unicode_compatible
 class Like(TimeStampedModel):
 
     creator = models.ForeignKey(user_models.User, null=True, on_delete=models.CASCADE)
     image = models.ForeignKey(Image, null=True, on_delete=models.CASCADE)
+
+    def __str__(self): # 어드민 화면에서 해당 제목이 어떻게 보이는지 형태를 정의한다
+        return 'User: {} - Image Caption: {}'.format(self.creator.username, self.image.caption)
