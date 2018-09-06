@@ -14,6 +14,11 @@ urlpatterns = [
         name="like_image"
     ),
     path(
+        "<int:image_id>/unlike/", # django variable 
+        view=views.UnLikeImage.as_view(), 
+        name="like_image"
+    ),
+    path(
         "<int:image_id>/comment/", # django variable 
         view=views.CommentOnImage.as_view(), 
         name="comment_image"

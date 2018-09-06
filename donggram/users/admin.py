@@ -13,7 +13,7 @@ class UserAdmin(auth_admin.UserAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
     fieldsets = (("User", {"fields": ("name", 
-    "followers", "following", "profile_image")}),
+    "followers", "following", "profile_image", 'bio', 'website')}),
     ) + auth_admin.UserAdmin.fieldsets
     list_display = [
             "username", 
