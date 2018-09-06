@@ -13,6 +13,16 @@ urlpatterns = [
         view=views.LikeImage.as_view(), 
         name="like_image"
     ),
+    path(
+        "<int:image_id>/comment/", # django variable 
+        view=views.CommentOnImage.as_view(), 
+        name="comment_image"
+    ),
+    path(
+        "<int:image_id>/comment/", # django variable 
+        view=views.CommentOnImage.as_view(), 
+        name="comment_image"
+    )
 ]
 
 #/images/3/like/
