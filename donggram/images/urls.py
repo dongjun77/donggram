@@ -19,9 +19,9 @@ urlpatterns = [
         name="comment_image"
     ),
     path(
-        "<int:image_id>/comment/", # django variable 
-        view=views.CommentOnImage.as_view(), 
-        name="comment_image"
+        "comments/<int:comment_id>/", # django variable 
+        view=views.Comment.as_view(), 
+        name="comment"
     )
 ]
 
