@@ -27,7 +27,12 @@ urlpatterns = [
         "comments/<int:comment_id>/", # django variable 
         view=views.Comment.as_view(), 
         name="comment"
-    )
+    ),
+    path(
+        "search/", # django variable 
+        view=views.Search.as_view(), 
+        name="search"
+    ),
 ]
 
 #/images/3/like/

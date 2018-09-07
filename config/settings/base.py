@@ -67,6 +67,7 @@ THIRD_PARTY_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'rest_framework',# REST framwork
+    'taggit',# Tags for the photos pipenv install django-taggit
 ] # 별도로 설치돈 것들
 LOCAL_APPS = [
     'donggram.users.apps.UsersAppConfig',
@@ -238,3 +239,5 @@ SOCIALACCOUNT_ADAPTER = 'donggram.users.adapters.SocialAccountAdapter'
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+TAGGIT_CASE_INSENSITIVE = True # 타겟에서 대문자 소문자를 가리지 않겠다 !
