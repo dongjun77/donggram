@@ -2,6 +2,16 @@ from rest_framework import serializers
 from . import models
 from donggram.users import models as user_models
 
+class SmallImageSerializer(serializers.ModelSerializer):
+
+    """ Used for the notifications """
+
+    class Meta:
+        model = models.Image
+        fields = (
+            'file',
+        )
+
 class CountImageSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -55,4 +65,5 @@ class ImageSerializer(serializers.ModelSerializer):
             'comments',
             'like_count',
             'creator',
+            'created_at'
         )
