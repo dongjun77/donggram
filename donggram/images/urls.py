@@ -14,12 +14,12 @@ urlpatterns = [
         name="feed"
     ),
     path(
-        "<int:image_id>/like/", # django variable 
+        "<int:image_id>/likes/", # django variable 
         view=views.LikeImage.as_view(), 
         name="like_image"
     ),
     path(
-        "<int:image_id>/unlike/", # django variable 
+        "<int:image_id>/unlikes/", # django variable 
         view=views.UnLikeImage.as_view(), 
         name="like_image"
     ),

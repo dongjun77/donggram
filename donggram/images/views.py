@@ -2,6 +2,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from . import models, serializers
+from donggram.users import models as user_models
+from donggram.users import serializers as user_serializers
 from donggram.notifications import views as notification_views
 # Create your views here.
 
@@ -41,18 +43,19 @@ class Feed(APIView):
         return Response(serializer.data)
 
 class LikeImage(APIView):
-    # def get(self, request, image_id, format=None):
 
-    #     likes = models.Like.objects.filter(image__id=image_id)
+    def get(self, request, image_id, format=None):
 
-    #     like_creators_ids = likes.values('creator_id')
+        likes = models.Like.objects.filter(image__id=image_id)
 
-    #     users = user_models.User.objects.filter(id__in=like_creators_ids)
+        like_creators_ids = likes.values('creator_id')
 
-    #     serializer = user_serializers.ListUserSerializer(
-    #         users, many=True, context={'request': request})
+        users = user_models.User.objects.filter(id__in=like_creators_ids)
 
-    #     return Response(data=serializer.data, status=status.HTTP_200_OK)
+        serializer = user_serializers.ListUserSerializer(
+            users, many=True)
+
+        return Response(data=serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, image_id, format=None):
 
