@@ -68,6 +68,7 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount',
     'rest_framework',# REST framwork
     'taggit',# Tags for the photos pipenv install django-taggit
+    'taggit_serializer', # tag serializer
 ] # 별도로 설치돈 것들
 LOCAL_APPS = [
     'donggram.users.apps.UsersAppConfig',
