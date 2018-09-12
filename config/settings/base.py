@@ -242,3 +242,14 @@ SOCIALACCOUNT_ADAPTER = 'donggram.users.adapters.SocialAccountAdapter'
 # ------------------------------------------------------------------------------
 
 TAGGIT_CASE_INSENSITIVE = True # 타겟에서 대문자 소문자를 가리지 않겠다 !
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
