@@ -44,4 +44,9 @@ urlpatterns = [
         view=views.ChangePassword.as_view(), 
         name="change"
     ),
+    path(
+        "login/facebook/",
+        view=views.FacebookLogin.as_view(),
+        name='fb_login'
+    )
 ]
